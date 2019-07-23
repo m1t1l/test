@@ -1,0 +1,23 @@
+- name: Install nginx
+  apt:
+    name: nginx
+    update_cache: true
+    state: present
+  tags: packages
+
+- name: Copy nginx config
+  template:
+    src: templates/nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: Restart nginx
+  shell: service nginx restart
+
+- name: Ensure the nginx service is running
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+
+

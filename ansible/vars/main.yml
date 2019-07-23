@@ -1,0 +1,5 @@
+db_user: worker
+db_password: worker
+db_name: app
+repository_url: https://github.com/mbaran0v/python-sample-app.git
+repository_path: /home/vagrant/python-sample-app

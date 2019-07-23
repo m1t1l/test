@@ -1,0 +1,16 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+PIDFile=/run/gunicorn/pid
+User=vagrant
+Group=vagrant
+RuntimeDirectory=gunicorn
+WorkingDirectory={{ repository_path }}
+ExecStart=/usr/bin/python3 /usr/bin/gunicorn --pid /run/gunicorn/pid app:api 
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target
